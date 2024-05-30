@@ -1,0 +1,115 @@
+//plugins {
+//    alias(libs.plugins.android.application)
+//    alias(libs.plugins.jetbrains.kotlin.android)
+////    alias("kotlin-kapt")
+////    alias('com.google.dagger.hilt.android')
+////    alias('kotlin-parcelize')
+//}
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'tj.appscannertest'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "tj.appscannertest"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.activity
+    implementation libs.androidx.constraintlayout
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+
+    implementation libs.material
+    implementation libs.bottom.navigation.bar
+    implementation libs.androidx.room.runtime
+    implementation libs.material
+    annotationProcessor libs.androidx.room.compiler
+    implementation libs.androidx.viewpager2
+
+    implementation libs.androidx.recyclerview
+    implementation libs.androidx.cardview
+
+    implementation libs.retrofit
+    implementation libs.converter.simplexml
+
+    // Kotlin lib
+    implementation libs.androidx.core.ktx
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22"
+//    kapt libs.compiler
+
+    // Navigation Components
+    implementation libs.androidx.navigation.fragment.ktx
+    implementation libs.navigation.ui.ktx
+
+
+    // Retrofit
+    implementation libs.retrofit
+    implementation libs.converter.gson
+
+    // OkHTTP
+    implementation libs.logging.interceptor
+
+    // Lifecycle
+    implementation libs.androidx.lifecycle.runtime.ktx
+    implementation libs.androidx.lifecycle.viewmodel.ktx
+
+    // Room
+    implementation libs.androidx.room.runtime
+    implementation libs.androidx.room.ktx
+    kapt libs.androidx.room.compiler
+
+    // Coroutines
+    implementation libs.kotlinx.coroutines.core
+    implementation libs.kotlinx.coroutines.android
+
+
+    // Glide
+    implementation libs.glide
+    kapt libs.github.compiler
+
+    //Hilt
+    implementation libs.hilt.android
+//    implementation (libs.hilt.android.testing)
+//    implementation (libs.androidx.hilt.common)
+    kapt (libs.dagger.hilt.compiler)
+
+    //lottie
+    implementation (libs.lottie)
+}
